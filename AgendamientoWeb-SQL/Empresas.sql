@@ -10,7 +10,7 @@
 	[emailEmpresa] VARCHAR(200) NOT NULL,
 	[telefonoEmpresa] VARCHAR(200) NOT NULL,
 	[direccionEmpresa] VARCHAR(200) NOT NULL,
-	FOREIGN KEY ([idTipoDocumento]) REFERENCES [TipoDocumentos]([idTipoDocumento]),
+	FOREIGN KEY ([idTipoDocumento]) REFERENCES [TiposDocumentos]([idTipoDocumento]),
 	FOREIGN KEY ([idCiudad]) REFERENCES [Ciudades]([idCiudad]),
 	FOREIGN KEY ([idTipoNegocio]) REFERENCES [TiposNegocios]([idTipoNegocio]),
 	FOREIGN KEY ([idContactoEmpresa]) REFERENCES [ContactosEmpresas]([idContactoEmpresa]),

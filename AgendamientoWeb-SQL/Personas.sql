@@ -8,7 +8,7 @@
 	documentoPersona VARCHAR(200) NOT NULL,
 	emailPersona VARCHAR(200) NOT NULL,
 	telefonoPersona VARCHAR(200) NOT NULL,
-	direccionPersona VARCHAR(200) NOT NULL
-	FOREIGN KEY ([idTipoDocumento]) REFERENCES [TipoDocumentos]([idTipoDocumento]),
+	direccionPersona VARCHAR(200) NOT NULL,
+	FOREIGN KEY ([idTipoDocumento]) REFERENCES [TiposDocumentos]([idTipoDocumento]),
 	FOREIGN KEY ([idCiudad]) REFERENCES [Ciudades]([idCiudad])
 )
