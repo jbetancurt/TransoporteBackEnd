@@ -79,6 +79,20 @@ builder.Services.AddTransient<ITiposNegociosServicios, TiposNegociosServicios>()
 builder.Services.AddTransient<IUbicacionesServicios, UbicacionesServicios>();
 builder.Services.AddTransient<IUsuariosServicios, UsuariosServicios>();
 
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: "AgendamientoWebCORS",
+                      builder =>
+                      {
+                          builder
+                             .AllowAnyOrigin()
+                             .AllowAnyMethod()
+                             .AllowAnyHeader();
+                      });
+});
+
+
 var app = builder.Build();
 
 if (!app.Environment.IsDevelopment())
@@ -117,7 +131,7 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
-
+app.UseCors("AgendamientoWebCORS");
 app.MapControllerRoute(
 	name: "default",
 	pattern: "{controller=Home}/{action=Index}/{id?}");
