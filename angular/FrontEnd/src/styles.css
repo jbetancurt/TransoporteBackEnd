@@ -2,3 +2,16 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+mat-card.cardconfiguracion  mat-card-header-title {
+    width: 100% !important;
+    text-align: center; 
+}
+mat-card.cardconfiguracion {
+    width: 100% !important;
+    text-align: center; 
+}
+
+mat-card.cardconfiguracion  mat-form-field {
+    width: 100% !important;
+}

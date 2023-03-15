@@ -22,6 +22,25 @@ namespace AgendamientoWeb.Controllers
 
             return Ok(await _ciudadesServicios.ConsultarPorId(id));
         }
+
+        [HttpGet]
+        [Route("ListarCiudades/{CodigoDepartamento}")]
+       
+        public async Task<IActionResult> ListarCiudades(string CodigoDepartamento)
+        {
+
+            return Ok(await _ciudadesServicios.ListarCiudadesPorDepartamento(CodigoDepartamento));
+        }
+
+        [HttpGet]
+        [Route("ListarDepartamentos/{idPais}")]
+
+        public async Task<IActionResult> ListarDepartamentos(int idPais)
+        {
+
+            return Ok(await _ciudadesServicios.ListarDepartamentosPorPais(idPais));
+        }
+
         [HttpPut]
         [Route("{id}")]
         public async Task<IActionResult> Put(int id, [FromBody] Ciudades obj)

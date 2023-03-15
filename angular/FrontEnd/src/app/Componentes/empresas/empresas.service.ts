@@ -18,7 +18,21 @@
   
     public Get(id : string): Observable<Empresas>{ 
       let url = urlPage + "/" + id; 
-      console.log(url);  
+      
+      let obj =this.httpClient.get<Empresas>(url, httpOptions);
+      return obj;
+    }
+
+    public ConsultarPorRutaEmpresa(rutaempresa:string): Observable<Empresas>{ 
+      let url = urlPage + "/consultarporruta/" + rutaempresa; 
+       
+      let obj =this.httpClient.get<Empresas>(url, httpOptions);
+      return obj;
+    }
+
+    public ConsultarPorDocumentoEmpresa(idTipoDocumentoEmpresa : string, documentoEmpresa:string): Observable<Empresas>{ 
+      let url = urlPage + "/" + idTipoDocumentoEmpresa + "/" + documentoEmpresa; 
+       
       let obj =this.httpClient.get<Empresas>(url, httpOptions);
       return obj;
     }
@@ -30,6 +44,8 @@
     }
   
     public Create(_Empresas : Empresas): Observable<number>{    
+      console.log(_Empresas);
+      
       return this.httpClient.post<number>(urlPage, _Empresas, httpOptions);
     }
     

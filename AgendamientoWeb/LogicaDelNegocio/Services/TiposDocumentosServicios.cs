@@ -40,13 +40,21 @@ namespace AgendamientoWeb.LogicaDelNegocio.Services
             await _dbcontext.SaveChangesAsync();
             return true;
         }
+
+        public async Task<List<TiposDocumentos>> ListarTiposDocumentos()
+        {
+            var obj = await _dbcontext.TiposDocumentos.ToListAsync();
+            return obj == null ? new List<TiposDocumentos>() : obj;
+        }
+       
     }
     public interface ITiposDocumentosServicios
-    {
-            Task<int> Agregar(TiposDocumentos tiposDocumentos);
-            Task<bool> Editar(int idTipoDocumento, TiposDocumentos tiposDocumentos);
-            Task<TiposDocumentos> ConsultarPorId(int idTipoDocumento);
-            Task Borrar(int idTipoDocumento);
+{
+        Task<int> Agregar(TiposDocumentos tiposDocumentos);
+        Task<bool> Editar(int idTipoDocumento, TiposDocumentos tiposDocumentos);
+        Task<TiposDocumentos> ConsultarPorId(int idTipoDocumento);
+        Task Borrar(int idTipoDocumento);
+        Task<List<TiposDocumentos>> ListarTiposDocumentos();
     }
     
 }

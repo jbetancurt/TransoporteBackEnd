@@ -6,6 +6,7 @@ namespace AgendamientoWeb.LogicaDelNegocio.Entidades
     {
         [Key]
         public int idUbicacion { get; set; }
+        public int idEmpresa { get; set; }
         public string nombreUbicacion { get; set; }
         public string direccionUbicacion { get; set; }
         public string telefonoUbicacion { get; set; }

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import TiposNegociosService from './tipos-negocios.service';
+import {TiposNegociosService} from './tipos-negocios.service';
 
 @Component({
   selector: 'app-tipos-negocios',

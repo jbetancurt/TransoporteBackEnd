@@ -1,0 +1,7 @@
+.mat-success {
+    color: #fff !important;
+    background-color: #28a745 !important;
+  }
+  .mat-success[disabled] {
+    background-color: rgba(0, 0, 0, 0.12) !important;
+  }

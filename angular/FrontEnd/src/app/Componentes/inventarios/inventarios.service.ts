@@ -11,7 +11,7 @@ const httpOptions = {
 @Injectable({
   providedIn: 'root'
 })
-export default class InventariosService {
+export class InventariosService {
   _Inventarios? : Inventarios[];
   
 

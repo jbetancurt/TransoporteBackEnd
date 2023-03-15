@@ -22,6 +22,24 @@ namespace AgendamientoWeb.Controllers
 
             return Ok(await _empresasServicios.ConsultarPorId(id));
         }
+
+        [HttpGet]
+        [Route("consultarporruta/{rutaempresa}")]
+        public async Task<IActionResult> ConsultarPorRutaEmpresa(string rutaempresa)
+        {
+
+            return Ok(await _empresasServicios.ConsultarPorRutaEmpresa(rutaempresa));
+        }
+
+        [HttpGet]
+        [Route("{idTipoDocumentoEmpresa}/{documentoEmpresa}")]
+        public async Task<IActionResult> ConsultarPorDocumentoEmpresa(int idTipoDocumentoEmpresa, string documentoEmpresa)
+        {
+
+            return Ok(await _empresasServicios.ConsultarPorDocumentoEmpresa(idTipoDocumentoEmpresa, documentoEmpresa));
+        }
+
+
         [HttpPut]
         [Route("{id}")]
         public async Task<IActionResult> Put(int id, [FromBody] Empresas obj)

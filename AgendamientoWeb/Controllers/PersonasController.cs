@@ -22,6 +22,17 @@ namespace AgendamientoWeb.Controllers
 
             return Ok(await _personasServicios.ConsultarPorId(id));
         }
+
+        [HttpGet]
+        [Route("{idTipoDocumento}/{documentoPersona}")]
+        public async Task<IActionResult> ConsultarPorDocumento(int idTipoDocumento, string documentoPersona)
+        {
+
+            return Ok(await _personasServicios.ConsultarPorDocumento(idTipoDocumento, documentoPersona));
+        }
+
+
+
         [HttpPut]
         [Route("{id}")]
         public async Task<IActionResult> Put(int id, [FromBody] Personas obj)

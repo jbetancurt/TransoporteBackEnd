@@ -1,1 +1,50 @@
-<p>inventarios works!</p>
+<form [formGroup]="FGAgregarInventario" (ngSubmit)="FGAgregarInventario.valid &&  enviarDatos()" #formulario>
+    <ng-container >
+        <mat-card class="cardconfiguracion">
+            <mat-card-header>
+                <mat-card-title>
+                    <span>
+                        Agregar Inventario
+                    </span>
+                </mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <mat-form-field appearance="fill"  class="form-comtrol">
+                    <mat-label> Codigo Producto:</mat-label>
+                    <input matInput   formControlName="codigoproducto" [readonly]="false">
+                </mat-form-field>
+                <br>
+
+                <mat-form-field appearance="fill"  class="form-comtrol">
+                    <mat-label>Nombre Producto:</mat-label>
+                    <input matInput   formControlName="nombreproducto" [readonly]="false">
+                </mat-form-field>
+                <br>
+
+                <mat-form-field appearance="fill"  class="form-comtrol">
+                    <mat-label>Cantidad:</mat-label>
+                    <input matInput   formControlName="cantidadinventario" [readonly]="false">
+                </mat-form-field>
+                <br>
+
+                <mat-form-field appearance="fill"  class="form-comtrol">
+                    <mat-label>Ubicacion:</mat-label>
+                    <mat-select formControlName="ubicacioninventario" >
+                        <mat-option  *ngFor="let menu of lstUbicaciones" [value]="menu.idUbicacion.toString()" >
+                            {{menu.nombreUbicacion}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <br>
+                
+                <br>
+            </mat-card-content>
+            <mat-card-footer>
+                <button  mat-button color="primary" (submit)="enviarDatos()" >
+                    Agregar
+                </button>
+            </mat-card-footer>
+
+        </mat-card>
+    </ng-container>
+</form>

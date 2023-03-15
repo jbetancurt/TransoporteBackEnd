@@ -9,3 +9,5 @@ export class Personas {
     telefonoPersona: string= "";
     direccionPersona: string= "";
 }
+
+

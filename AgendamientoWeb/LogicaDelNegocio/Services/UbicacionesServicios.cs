@@ -32,6 +32,21 @@ namespace AgendamientoWeb.LogicaDelNegocio.Services
             return obj == null ? new Ubicaciones() : obj;
         }
 
+
+
+        public async Task<List<Ubicaciones>> ListarUbicaciones(int idEmpresa)
+        {
+            var obj = await _dbcontext.Ubicaciones.Where(x => x.idEmpresa == idEmpresa).Select(x => new Ubicaciones()
+            {
+                idEmpresa = x.idEmpresa,
+                idUbicacion = x.idUbicacion,
+                nombreUbicacion = x.nombreUbicacion
+            }
+            ).Distinct().ToListAsync();
+            return obj == null ? new List<Ubicaciones>() : obj;
+        }
+       
+
         public async Task<bool> Editar(int idUbicacion, Ubicaciones ubicaciones)
         {
             _dbcontext.Ubicaciones.Add(ubicaciones);
@@ -44,8 +59,11 @@ namespace AgendamientoWeb.LogicaDelNegocio.Services
     {
         Task<int> Agregar(Ubicaciones ubicaciones);
         Task<bool> Editar(int idUbicacion, Ubicaciones ubicaciones);
+
         Task<Ubicaciones> ConsultarPorId(int idUbicacion);
         Task Borrar(int idUbicacion);
+
+        Task<List<Ubicaciones>> ListarUbicaciones(int idEmpresa);
     }
 }
 

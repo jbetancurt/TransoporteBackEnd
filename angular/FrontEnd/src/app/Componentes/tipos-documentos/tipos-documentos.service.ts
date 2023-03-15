@@ -4,23 +4,31 @@
   import { Observable } from 'rxjs';
   import { environment } from 'src/environments/environment';
   import { TiposDocumentos } from './tipos-documentos.model';
-  const urlPage = environment.apiUrl +'/api/tipos-documentos';
+  const urlPage = environment.apiUrl +'/api/TiposDocumentos';
   const httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
   @Injectable({
     providedIn: 'root'
   })
-  export default class TiposDocumentosService {
+  export  class TiposDocumentosService {
     _TiposDocumentos? : TiposDocumentos[];
+    
     
   
     constructor(private httpClient : HttpClient) { }
   
     public Get(id : string): Observable<TiposDocumentos>{ 
       let url = urlPage + "/" + id; 
-      console.log(url);  
+    //  console.log(url);  
       let obj =this.httpClient.get<TiposDocumentos>(url, httpOptions);
+      return obj;
+    }
+
+    public ListarTiposDocumentos(): Observable<TiposDocumentos[]>{ 
+      let url = urlPage; 
+      //console.log(url);  
+      let obj =this.httpClient.get<TiposDocumentos[]>(url, httpOptions);
       return obj;
     }
   

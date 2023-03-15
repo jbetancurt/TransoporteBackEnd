@@ -39,6 +39,13 @@ namespace AgendamientoWeb.LogicaDelNegocio.Services
             await _dbcontext.SaveChangesAsync();
             return true;
         }
+
+        public async Task<List<Paises>> ListarTodos()
+        {
+            var obj = await _dbcontext.Paises.ToListAsync();
+            return obj == null ? new List<Paises>() : obj;
+            
+        }
     }
     public interface IPaisesServicios
     {
@@ -46,6 +53,8 @@ namespace AgendamientoWeb.LogicaDelNegocio.Services
         Task<bool> Editar(int idPais, Paises paises);
         Task<Paises> ConsultarPorId(int idPais);
         Task Borrar(int idPais);
+        Task<List<Paises>> ListarTodos();
     }
+    
 }
 

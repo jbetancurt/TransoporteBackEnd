@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-
+import { MaterialModule } from "./Modulos/material/material.module";
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CitasComponent } from './Componentes/citas/citas.component';
@@ -27,9 +27,7 @@ import { TiposNegociosComponent } from './Componentes/tipos-negocios/tipos-negoc
 import { UbicacionesComponent } from './Componentes/ubicaciones/ubicaciones.component';
 import { UsuariosComponent } from './Componentes/usuarios/usuarios.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatCardModule } from "@angular/material/card";
-import { MatInputModule } from "@angular/material/input";
-import { MatFormFieldModule } from "@angular/material/form-field";
+import { AdministrarEmpresasComponent } from './Componentes/administradores/administrar-empresas/administrar-empresas.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +52,8 @@ import { MatFormFieldModule } from "@angular/material/form-field";
     TiposDocumentosComponent,
     TiposNegociosComponent,
     UbicacionesComponent,
-    UsuariosComponent
+    UsuariosComponent,
+    AdministrarEmpresasComponent
   ],
   imports: [
     BrowserModule,
@@ -63,9 +62,7 @@ import { MatFormFieldModule } from "@angular/material/form-field";
     HttpClientModule,
     FormsModule, 
     ReactiveFormsModule,
-    MatCardModule,
-    MatInputModule,
-    MatFormFieldModule 
+    MaterialModule 
   ],
   providers: [],
   bootstrap: [AppComponent]

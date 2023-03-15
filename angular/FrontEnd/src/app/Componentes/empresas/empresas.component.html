@@ -1,1 +1,130 @@
-<p>empresas works!</p>
+<form [formGroup]="FGAgregarEmpresas" (ngSubmit)="FGAgregarEmpresas.valid &&  enviarDatos()" #formulario>
+    <ng-container >
+        <mat-card class="cardconfiguracion">
+            <mat-card-header>
+                <mat-card-title>
+                    <span>
+                        Agregar Empresas
+                    </span>
+                    
+                </mat-card-title>
+            </mat-card-header>
+            <mat-card-content >
+                
+                <mat-form-field appearance="fill"  class="form-comtrol">
+                    <mat-label>Nombre Responsable:</mat-label>
+                    <input matInput   formControlName="nombreresponsable" [readonly]="false">
+                </mat-form-field>
+                <br>
+                <mat-form-field appearance="fill"  class="form-comtrol">
+                    <mat-label>Apellido Responsable:</mat-label>
+                    <input matInput   formControlName="apellidoresponsable" [readonly]="false">
+                </mat-form-field>
+                <br>
+                
+                <mat-form-field appearance="fill"  class="form-comtrol">
+                    <mat-label>Tipo Documento Responsable:</mat-label>
+                    <mat-select formControlName="tipodocumentoresponsable">
+                        <mat-option  *ngFor="let menu of lstTiposDocumentos" [value]="menu.idTipoDocumento.toString()" >
+                            {{menu.nombreDocumento}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                
+                
+                <br>
+                <mat-form-field appearance="fill"  class="form-comtrol">
+                    <mat-label> Numero Documento Responsable:</mat-label>
+                    <input matInput   formControlName="numerodocumentoresponsable" [readonly]="false">
+                </mat-form-field>
+                <br>
+                <mat-form-field appearance="fill"  class="form-comtrol">
+                    <mat-hint></mat-hint>
+                    <mat-label>Nobre Empresa:</mat-label>
+                    <input matInput   formControlName="nombreempresa" name="nombre" type="text">
+                </mat-form-field>
+                <br>
+                <mat-form-field appearance="fill"  class="form-comtrol">
+                    <mat-label>Tipo De Negocio:</mat-label>
+                    <mat-select formControlName="tipodenegocio">
+                        <mat-option  *ngFor="let menu of lstTipoNegocio" [value]="menu.idTipoNegocio.toString()" >
+                            {{menu.nombreTipoNegocio}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <br>
+                <mat-form-field appearance="fill"  class="form-comtrol">
+                    <mat-label>Tipo Documento Empresa:</mat-label>
+                    <mat-select formControlName="tipodocumentoempresa">
+                        <mat-option  *ngFor="let menu of lstTiposDocumentos" [value]="menu.idTipoDocumento.toString()" >
+                            {{menu.nombreDocumento}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <br>
+                
+                <mat-form-field appearance="fill"  class="form-comtrol">
+                    <mat-label>Numero Documento Empresa::</mat-label>
+                    <input matInput   formControlName="numerodocumentoempresa" [readonly]="false">
+                </mat-form-field>
+                <br>                
+
+                <mat-form-field appearance="fill"  class="form-comtrol">
+                    <mat-label>Pais:</mat-label>
+                    <mat-select formControlName="pais" (selectionChange)="seleccionarDepartamento($event.value)">
+                        <mat-option  *ngFor="let menu of lstPaises" [value]="menu.idPais.toString()" >
+                            {{menu.nombrePais}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <br>
+                <mat-form-field appearance="fill"  class="form-comtrol">
+                    <mat-label>Departamento:</mat-label>
+                    <mat-select formControlName="departamento" (selectionChange)="seleccionarCiudad($event.value)">
+                        <mat-option  *ngFor="let menu of lstDepartamentos" [value]="menu.codigoDepartamento.toString()" >
+                            {{menu.nombreDepartamento}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <br>
+                <mat-form-field appearance="fill"  class="form-comtrol">
+                    <mat-label>Ciudad:</mat-label>
+                    <mat-select formControlName="ciudad">
+                        <mat-option  *ngFor="let menu of lstCiudades" [value]="menu.idCiudad.toString()" >
+                            {{menu.nombreCiudad}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <br>
+                <mat-form-field appearance="fill"  class="form-comtrol">
+                    <mat-label>Direccion:</mat-label>
+                    <input matInput   formControlName="direccion" [readonly]="false">
+                </mat-form-field>
+                <br>
+                <mat-form-field appearance="fill"  class="form-comtrol">
+                    <mat-label>Telefono:</mat-label>
+                    <input matInput   formControlName="telefono" [readonly]="false">
+                </mat-form-field>
+                <br>
+                <mat-form-field appearance="fill"  class="form-comtrol">
+                    <mat-label>E-mail:</mat-label>
+                    <input matInput   formControlName="email" name="email" type="email">
+                </mat-form-field>
+                <br>
+                <mat-form-field appearance="fill"  class="form-comtrol">
+                    <mat-label>Ruta Empresa:</mat-label>
+                    <input matInput   formControlName="rutaempresa" [readonly]="false" (change)="rutaEmpresaChange()">
+                    <mat-hint *ngIf='FGAgregarEmpresas.controls["rutaempresa"].errors?.["rutainvalida"]'>Error en ruta</mat-hint>
+                </mat-form-field>
+                <br>
+                <br>
+            </mat-card-content>
+            <mat-card-footer>
+                <button  mat-button color="primary" (submit)="enviarDatos()" >
+                    Agregar
+                </button>
+            </mat-card-footer>
+        </mat-card>
+        
+    </ng-container>
+</form>

@@ -40,6 +40,14 @@ namespace AgendamientoWeb.LogicaDelNegocio.Services
             await _dbcontext.SaveChangesAsync();
             return true;
         }
+
+        public async Task<List<TiposNegocios>> ListarTiposNegocios()
+        {
+            var obj = await _dbcontext.TiposNegocios.ToListAsync();
+            return obj == null ? new List<TiposNegocios>() : obj;
+        }
+
+        
     }
     public interface ITiposNegociosServicios
         {
@@ -47,6 +55,7 @@ namespace AgendamientoWeb.LogicaDelNegocio.Services
             Task<bool> Editar(int idTipoNegocio, TiposNegocios tiposNegocios);
             Task<TiposNegocios> ConsultarPorId(int idTipoNegocio);
             Task Borrar(int idTipoNegocio);
-        }
+            Task<List<TiposNegocios>> ListarTiposNegocios();
+    }
     
 }

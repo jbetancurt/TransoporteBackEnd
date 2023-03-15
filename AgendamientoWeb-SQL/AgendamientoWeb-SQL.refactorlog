@@ -203,4 +203,18 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="idCitasPorprogramacionDeServicio" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="cca4ace7-921d-453d-8c37-a66d5a5b19d2" ChangeDateTime="03/07/2023 00:45:07">
+    <Property Name="ElementName" Value="[dbo].[Paises].[Iso2]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Paises]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="iso2" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="bbb09a6c-9b02-4092-bb1c-3baa60a97b7b" ChangeDateTime="03/07/2023 01:30:24">
+    <Property Name="ElementName" Value="[dbo].[Ciudades].[ codigoDepartamento]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Ciudades]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="codigoDepartamento" />
+  </Operation>
 </Operations>

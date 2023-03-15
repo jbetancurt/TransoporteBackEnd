@@ -34,6 +34,18 @@ namespace AgendamientoWeb.LogicaDelNegocio.Services
             return obj == null ? new Empresas() : obj;
         }
 
+        public async Task<Empresas> ConsultarPorRutaEmpresa(string rutaempresa)
+        {
+            var obj = await _dbcontext.Empresas.FirstOrDefaultAsync(x => x.rutaEmpresa == rutaempresa);
+            return obj == null ? new Empresas() : obj;
+        }
+
+        public async Task<Empresas> ConsultarPorDocumentoEmpresa(int idTipoDocumentoEmpresa, string documentoEmpresa)
+        {
+            var obj = await _dbcontext.Empresas.FirstOrDefaultAsync(x => x.idTipoDocumento == idTipoDocumentoEmpresa && x.documentoEmpresa == documentoEmpresa);
+            return obj == null ? new Empresas() : obj;
+        }
+
         public async Task<bool> Editar(int idEmpresa, Empresas empresas)
         {
             _dbcontext.Empresas.Add(empresas);
@@ -47,6 +59,10 @@ namespace AgendamientoWeb.LogicaDelNegocio.Services
         Task<int> Agregar(Empresas empresas);
         Task<bool> Editar(int idEmpresa, Empresas empresas);
         Task<Empresas> ConsultarPorId(int idEmpresa);
+        Task<Empresas> ConsultarPorDocumentoEmpresa(int idTipoDocumentoEmpresa, string documentoEmpresa);
+
+        Task<Empresas> ConsultarPorRutaEmpresa(string rutaempresa);
+        
         Task Borrar(int idEmpresa);
     }
 
