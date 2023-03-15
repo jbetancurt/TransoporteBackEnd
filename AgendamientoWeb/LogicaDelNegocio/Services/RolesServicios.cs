@@ -12,6 +12,7 @@ namespace AgendamientoWeb.LogicaDelNegocio.Services
         {
             _dbcontext = dbcontext;
         }
+
         public async Task<int> Agregar(Roles roles)
         {
             _dbcontext.Roles.Add(roles);
@@ -38,7 +39,16 @@ namespace AgendamientoWeb.LogicaDelNegocio.Services
             _dbcontext.Entry(roles).State = EntityState.Modified;
             await _dbcontext.SaveChangesAsync();
             return true;
+
         }
+
+        public async Task<List<Roles>> ListarRoles()
+        {
+            var obj = await _dbcontext.Roles.ToListAsync();
+            return obj == null ? new List<Roles>() : obj;
+        }
+
+        
     }
     public interface IRolesServicios
     {
@@ -46,6 +56,8 @@ namespace AgendamientoWeb.LogicaDelNegocio.Services
         Task<bool> Editar(int idRol, Roles roles);
         Task<Roles> ConsultarPorId(int idRol);
         Task Borrar(int idRol);
+        Task<List<Roles>> ListarRoles();
+
     }
 }
 

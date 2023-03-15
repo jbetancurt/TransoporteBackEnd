@@ -23,6 +23,13 @@ export default class RolesService {
     return obj;
   }
 
+  public ListarRoles(): Observable<Roles[]>{ 
+    let url = urlPage; 
+    //console.log(url);  
+    let obj =this.httpClient.get<Roles[]>(url, httpOptions);
+    return obj;
+  }
+
   public Edit(_Roles : Roles): Observable<boolean>{  
     
     //console.log(this.urlPage + '/' + (_Roles.idRol));  

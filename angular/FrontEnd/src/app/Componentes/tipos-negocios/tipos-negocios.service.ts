@@ -4,14 +4,14 @@
   import { Observable } from 'rxjs';
   import { environment } from 'src/environments/environment';
   import { TiposNegocios } from './tipos-negocios.model';
-  const urlPage = environment.apiUrl +'/api/tipos-negocios';
+  const urlPage = environment.apiUrl +'/api/TiposNegocios';
   const httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
   @Injectable({
     providedIn: 'root'
   })
-  export default class TiposNegociosService {
+  export class TiposNegociosService {
     _TiposNegocios? : TiposNegocios[];
     
   
@@ -21,6 +21,13 @@
       let url = urlPage + "/" + id; 
       console.log(url);  
       let obj =this.httpClient.get<TiposNegocios>(url, httpOptions);
+      return obj;
+    }
+
+    public ListarTiposNegocios(): Observable<TiposNegocios[]>{ 
+      let url = urlPage; 
+      //console.log(url);  
+      let obj =this.httpClient.get<TiposNegocios[]>(url, httpOptions);
       return obj;
     }
   

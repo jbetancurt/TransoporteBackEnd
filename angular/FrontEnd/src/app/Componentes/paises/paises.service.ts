@@ -11,7 +11,7 @@
   @Injectable({
     providedIn: 'root'
   })
-  export default class PaisesService {
+  export class PaisesService {
     _Paises? : Paises[];
     
   
@@ -19,8 +19,15 @@
   
     public Get(id : string): Observable<Paises>{ 
       let url = urlPage + "/" + id; 
-      console.log(url);  
+      //console.log(url);  
       let obj =this.httpClient.get<Paises>(url, httpOptions);
+      return obj;
+    }
+
+    public ListarPaises(): Observable<Paises[]>{ 
+      let url = urlPage; 
+      //console.log(url);  
+      let obj =this.httpClient.get<Paises[]>(url, httpOptions);
       return obj;
     }
   

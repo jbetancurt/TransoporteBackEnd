@@ -14,9 +14,18 @@ namespace AgendamientoWeb.LogicaDelNegocio.Services
         }
         public async Task<int> Agregar(Personas personas)
         {
-            _dbcontext.Personas.Add(personas);
-            await _dbcontext.SaveChangesAsync();
-            return personas.idPersona;
+            try
+            {
+                _dbcontext.Personas.Add(personas);
+                await _dbcontext.SaveChangesAsync();
+                return personas.idPersona;
+            }
+            catch (Exception e)
+            {
+
+                throw;
+            }
+           
 
         }
 
@@ -33,6 +42,12 @@ namespace AgendamientoWeb.LogicaDelNegocio.Services
             return obj == null ? new Personas() : obj;
         }
 
+        public async Task<Personas> ConsultarPorDocumento(int idTipoDocumento, string documentoPersona)
+        {
+            var obj = await _dbcontext.Personas.FirstOrDefaultAsync(x => x.idTipoDocumento == idTipoDocumento && x.documentoPersona == documentoPersona);
+            return obj == null ? new Personas() : obj;
+        }
+
         public async Task<bool> Editar(int idPersona, Personas personas)
         {
             _dbcontext.Personas.Add(personas);
@@ -46,6 +61,7 @@ namespace AgendamientoWeb.LogicaDelNegocio.Services
         Task<int> Agregar(Personas personas);
         Task<bool> Editar(int idPersona, Personas personas);
         Task<Personas> ConsultarPorId(int idPersona);
+        Task<Personas> ConsultarPorDocumento(int idTipoDocumento,string documentoPersona);
         Task Borrar(int idPersona);
     }
 }

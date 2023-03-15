@@ -1,1 +1,44 @@
-<p>ubicaciones works!</p>
+<form [formGroup]="FGAgregarUbicaciones" (ngSubmit)="FGAgregarUbicaciones.valid &&  enviarDatos()" #formulario>
+    <ng-container >
+        <mat-card class="cardconfiguracion">
+            <mat-card-header>
+                <mat-card-title>
+                    <span>
+                        Agregar Ubicacion
+                    </span>
+                </mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <mat-form-field appearance="fill"  class="form-comtrol">
+                    <mat-label> Nombre Ubicacion:</mat-label>
+                    <input matInput   formControlName="nombreubicacion" [readonly]="false">
+                </mat-form-field>
+                <br>
+
+                <mat-form-field appearance="fill"  class="form-comtrol">
+                    <mat-label>Direccion:</mat-label>
+                    <input matInput   formControlName="direccionubicacion" [readonly]="false">
+                </mat-form-field>
+                <br>
+
+                <mat-form-field appearance="fill"  class="form-comtrol">
+                    <mat-label>Telefono:</mat-label>
+                    <input matInput   formControlName="telefono" [readonly]="false">
+                </mat-form-field>
+                <br>
+
+                <mat-form-field appearance="fill"  class="form-comtrol">
+                    <mat-label>Observacion:</mat-label>
+                    <input matInput   formControlName="observacionubicacion" [readonly]="false">
+                </mat-form-field>
+                <br>
+            </mat-card-content>
+            <mat-card-footer>
+                <button  mat-button color="primary" (submit)="enviarDatos()" >
+                    Agregar
+                </button>
+            </mat-card-footer>
+
+        </mat-card>
+    </ng-container>
+</form>

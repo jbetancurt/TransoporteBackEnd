@@ -1,1 +1,104 @@
-<p>personas works!</p>
+<form [formGroup]="FGAgregarPersonas" (ngSubmit)="FGAgregarPersonas.valid &&  enviarDatos()" #formulario>
+    <ng-container >
+        <mat-card class="cardconfiguracion">
+            <mat-card-header>
+                <mat-card-title>
+                    <span>
+                        Agregar Personas
+                    </span>
+                </mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <mat-form-field appearance="fill"  class="form-comtrol">
+                    <mat-label>Nombres:</mat-label>
+                    <input matInput   formControlName="nombrepersona" [readonly]="false">
+                </mat-form-field>
+                <br>
+
+                <mat-form-field appearance="fill"  class="form-comtrol">
+                    <mat-label>Apellidos:</mat-label>
+                    <input matInput   formControlName="apellidopersona" [readonly]="false">
+                </mat-form-field>
+                <br>
+                
+                <mat-form-field appearance="fill"  class="form-comtrol">
+                    <mat-label>Tipo Documento Persona:</mat-label>
+                    <mat-select formControlName="tipodocumentopersona">
+                        <mat-option  *ngFor="let menu of lstTiposDocumentos" [value]="menu.idTipoDocumento.toString()" >
+                            {{menu.nombreDocumento}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                
+                
+                <br>
+                <mat-form-field appearance="fill"  class="form-comtrol">
+                    <mat-label> Numero Documento Persona:</mat-label>
+                    <input matInput   formControlName="numerodocumentopersona" [readonly]="false">
+                </mat-form-field>
+                <br>
+
+                <mat-form-field appearance="fill"  class="form-comtrol">
+                    <mat-label>Pais:</mat-label>
+                    <mat-select formControlName="pais" (selectionChange)="seleccionarDepartamento($event.value)">
+                        <mat-option  *ngFor="let menu of lstPaises" [value]="menu.idPais.toString()" >
+                            {{menu.nombrePais}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <br>
+                <mat-form-field appearance="fill"  class="form-comtrol">
+                    <mat-label>Departamento:</mat-label>
+                    <mat-select formControlName="departamento" (selectionChange)="seleccionarCiudad($event.value)">
+                        <mat-option  *ngFor="let menu of lstDepartamentos" [value]="menu.codigoDepartamento.toString()" >
+                            {{menu.nombreDepartamento}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <br>
+                <mat-form-field appearance="fill"  class="form-comtrol">
+                    <mat-label>Ciudad:</mat-label>
+                    <mat-select formControlName="ciudad">
+                        <mat-option  *ngFor="let menu of lstCiudades" [value]="menu.idCiudad.toString()" >
+                            {{menu.nombreCiudad}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <br>
+                <mat-form-field appearance="fill"  class="form-comtrol">
+                    <mat-label>Direccion:</mat-label>
+                    <input matInput   formControlName="direccion" [readonly]="false">
+                </mat-form-field>
+                <br>
+                <mat-form-field appearance="fill"  class="form-comtrol">
+                    <mat-label>Telefono:</mat-label>
+                    <input matInput   formControlName="telefono" [readonly]="false">
+                </mat-form-field>
+                <br>
+                <mat-form-field appearance="fill"  class="form-comtrol">
+                    <mat-label>E-mail:</mat-label>
+                    <input matInput   formControlName="email" name="email" type="email">
+                </mat-form-field>
+                <br>
+                <br>
+
+            </mat-card-content>
+            <mat-card-footer>
+                <button  mat-button color="primary" (submit)="enviarDatos()" >
+                    Agregar
+                </button>
+            </mat-card-footer>
+        </mat-card>
+
+
+    </ng-container>
+
+
+
+    
+
+
+
+
+
+</form>

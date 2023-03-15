@@ -22,6 +22,15 @@ namespace AgendamientoWeb.Controllers
 
             return Ok(await _ubicacionesServicios.ConsultarPorId(id));
         }
+
+        [HttpGet]
+        [Route("idEmpresa")]
+        public async Task<IActionResult> ListarUbicaciones(int idEmpresa)
+        {
+
+            return Ok(await _ubicacionesServicios.ListarUbicaciones(idEmpresa));
+        }
+
         [HttpPut]
         [Route("{id}")]
         public async Task<IActionResult> Put(int id, [FromBody] Ubicaciones obj)

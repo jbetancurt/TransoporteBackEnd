@@ -42,13 +42,35 @@ namespace AgendamientoWeb.LogicaDelNegocio.Services
             await _dbcontext.SaveChangesAsync();
             return true;
         }
+
+        public async Task<List<Ciudades>> ListarCiudadesPorDepartamento(string codigoDepartamento)
+        {
+            var obj = await _dbcontext.Ciudades.Where(x => x.codigoDepartamento == codigoDepartamento).ToListAsync();
+            return obj == null ? new List<Ciudades>() : obj;
+        }
+
+        public async Task<List<Departamentos>> ListarDepartamentosPorPais(int idPais)
+        {
+            var obj = await _dbcontext.Ciudades.Where(x=> x.idPais == idPais).Select(x => new Departamentos()
+            {
+                idPais = x.idPais,
+                codigoDepartamento = x.codigoDepartamento,
+                nombreDepartamento = x.nombreDepartamento
+            }
+            ).Distinct().ToListAsync();
+            return obj == null ? new List<Departamentos>() : obj;
+        }
+
+        
     }
     public interface ICiudadesServicios
-        {
-            Task<int> Agregar(Ciudades ciudades);
-            Task<bool> Editar(int idCiudad, Ciudades ciudades);
-            Task<Ciudades> ConsultarPorId(int idCiudad);
-            Task Borrar(int idCiudad);
-        } 
+    {
+        Task<int> Agregar(Ciudades ciudades);
+        Task<bool> Editar(int idCiudad, Ciudades ciudades);
+        Task<Ciudades> ConsultarPorId(int idCiudad);
+        Task Borrar(int idCiudad);
+        Task<List<Departamentos>> ListarDepartamentosPorPais(int idPais);
+        Task<List<Ciudades>> ListarCiudadesPorDepartamento(string codigoDepartamento);
+    } 
 
 }

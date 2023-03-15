@@ -22,6 +22,15 @@ namespace AgendamientoWeb.Controllers
 
             return Ok(await _tiposNegociosServicios.ConsultarPorId(id));
         }
+
+        [HttpGet]
+        [Route("")]
+        public async Task<IActionResult> Todos()
+        {
+
+            return Ok(await _tiposNegociosServicios.ListarTiposNegocios());
+        }
+
         [HttpPut]
         [Route("{id}")]
         public async Task<IActionResult> Put(int id, [FromBody] TiposNegocios obj)

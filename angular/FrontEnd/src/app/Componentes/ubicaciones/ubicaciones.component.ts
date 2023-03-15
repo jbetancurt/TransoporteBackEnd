@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import UbicacionesService from './ubicaciones.service';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import {UbicacionesService} from './ubicaciones.service';
 
 @Component({
   selector: 'app-ubicaciones',
@@ -8,8 +9,20 @@ import UbicacionesService from './ubicaciones.service';
 })
 export class UbicacionesComponent 
 {
-  constructor(private ubicacionesService : UbicacionesService)
+  FGAgregarUbicaciones : FormGroup = this.formBuilder.group({      
+    nombreubicacion:new FormControl('',Validators.required),
+    direccionubicacion:new FormControl('',Validators.required),
+    telefono:new FormControl('',Validators.required),
+    observacionubicacion:'',
+  });
+  
+  constructor(private ubicacionesService : UbicacionesService,
+    private formBuilder: FormBuilder)
   {
     
-  }   
+  }  
+  enviarDatos() : void
+  {
+    console.log(this.FGAgregarUbicaciones.value); 
+  }
 }

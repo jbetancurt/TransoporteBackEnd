@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import CiudadesService from './ciudades.service';
+import {CiudadesService} from './ciudades.service';
 
 @Component({
   selector: 'app-ciudades',

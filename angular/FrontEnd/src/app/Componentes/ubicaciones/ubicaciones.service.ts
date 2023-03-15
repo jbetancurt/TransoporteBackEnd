@@ -11,7 +11,7 @@
   @Injectable({
     providedIn: 'root'
   })
-  export default class UbicacionesService {
+  export class UbicacionesService {
     _Ubicaciones? : Ubicaciones[];
     
   
@@ -21,6 +21,13 @@
       let url = urlPage + "/" + id; 
       console.log(url);  
       let obj =this.httpClient.get<Ubicaciones>(url, httpOptions);
+      return obj;
+    }
+
+    public ListarUbicaciones(): Observable<Ubicaciones[]>{ 
+      let url = urlPage; 
+      //console.log(url);  
+      let obj =this.httpClient.get<Ubicaciones[]>(url, httpOptions);
       return obj;
     }
   
