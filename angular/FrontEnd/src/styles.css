@@ -15,3 +15,8 @@ mat-card.cardconfiguracion {
 mat-card.cardconfiguracion  mat-form-field {
     width: 100% !important;
 }
+
+app-root {
+    display: block;
+    height: 100%;
+  }

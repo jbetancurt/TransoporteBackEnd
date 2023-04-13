@@ -34,14 +34,14 @@ export  class PersonasService {
 
   public Edit(_Personas : Personas): Observable<boolean>{  
     
-   // console.log(this.urlPage + '/' + (_Personas.idPersona));  
-    return this.httpClient.put<boolean>(urlPage + '/' + (_Personas.idPersona), _Personas, httpOptions);
+   // console.log('XXXXXX'+ urlPage + '/' + (_Personas.idPersona));  
+   let strurl=urlPage + '/' + _Personas.idPersona.toString();
+   console.log(strurl);
+   
+    return this.httpClient.put<boolean>(strurl, _Personas, httpOptions);
   }
 
   public Create(_Personas : Personas): Observable<number>{  
-    console.log(urlPage);
-    console.log(_Personas);  
-    console.log(httpOptions);
     
     return this.httpClient.post<number>(urlPage, _Personas, httpOptions);
   }

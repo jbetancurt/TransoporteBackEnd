@@ -1,0 +1,16 @@
+ng generate c PersonasPorEmpresas --skip-tests
+ng generate cl personas-por-empresas/PersonasPorEmpresas --type=model --skip-tests
+ng generate s personas-por-empresas/PersonasPorEmpresas --skip-tests
+ng generate cl personas-por-empresas/index --skip-tests
+
+esto se ejecuta dentro del power shell en componentes
+
+
+export * from './personas-por-empresas.model';
+export * from './personas-por-empresas.service';
+export { PersonasPorEmpresasComponent } from './personas-por-empresas.component';
+las primeras 4 crean los archivos desde powershell
+las ultimas 3 son para poner en index
+
+
+personas-por-empresas

@@ -11,7 +11,7 @@
   @Injectable({
     providedIn: 'root'
   })
-  export default class ServiciosService {
+  export  class ServiciosService {
     _Servicios? : Servicios[];
     
   

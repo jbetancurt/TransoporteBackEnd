@@ -84,13 +84,16 @@
 
             </mat-card-content>
             <mat-card-footer>
-                <button  mat-button color="primary" (submit)="enviarDatos()" >
+                <button *ngIf="idPersona <= 0" mat-button color="primary" (submit)="enviarDatos()" >
                     Agregar
                 </button>
+                <button *ngIf="idPersona > 0" mat-button color="primary" (submit)="enviarDatos()" >
+                    Editar
+                </button>
+                
             </mat-card-footer>
         </mat-card>
-
-
+        
     </ng-container>
 
 

@@ -18,6 +18,9 @@ namespace AgendamientoWeb.LogicaDelNegocio.DbContexts
         public DbSet<Locaciones> Locaciones { get; set; }
         public DbSet<Paises> Paises { get; set; }
         public DbSet<Personas> Personas { get; set; }
+        public DbSet<PersonasPorEmpresas> PersonasPorEmpresas { get; set; }
+        public DbSet<RegistrosDeCambios> RegistrosDeCambios { get; set; }
+
         public DbSet<ProgramacionesDeServicios> ProgramacionesDeServicios { get; set; }
         public DbSet<Roles> Roles { get; set; }
         public DbSet<RolesUsuarios> RolesUsuarios { get; set; }
@@ -26,8 +29,7 @@ namespace AgendamientoWeb.LogicaDelNegocio.DbContexts
         public DbSet<TiposNegocios> TiposNegocios { get; set; }
         public DbSet<Ubicaciones> Ubicaciones { get; set; }
         public DbSet<Usuarios> Usuarios { get; set; }
-
-
+        
         //OracleDBContext
         public AgendamientoWebDbContext(DbContextOptions<AgendamientoWebDbContext> options) : base(options)
         {

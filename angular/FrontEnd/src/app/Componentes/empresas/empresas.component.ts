@@ -1,9 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CiudadesService, Ciudades,Departamentos } from '../ciudades';
 import { Paises, PaisesService} from '../paises/';
 import { Personas, PersonasService } from '../personas';
+import { PersonasPorEmpresas } from '../personas-por-empresas';
+import { PersonasPorEmpresasService} from '../personas-por-empresas/personas-por-empresas.service';
 import { TiposDocumentos, TiposDocumentosService } from '../tipos-documentos';
 import { TiposNegocios, TiposNegociosService } from '../tipos-negocios';
 import { Ubicaciones, UbicacionesService } from '../ubicaciones';
@@ -21,6 +23,7 @@ import EmpresasService from './empresas.service';
 
 export class EmpresasComponent 
 {
+  @Input() idEmpresa = 0;
   lstPaises: Paises[]=[];
   lstTiposDocumentos: TiposDocumentos[]=[];
   lstDepartamentos: Departamentos[]=[];
@@ -47,6 +50,42 @@ export class EmpresasComponent
     telefono:'',
     rutaempresa:new FormControl('',Validators.required),
   });
+
+
+  cargarDatosEmpresa(empresa:Empresas, ciudad:Ciudades, persona:Personas){
+        
+    this.FGAgregarEmpresas.patchValue({
+      nombreempresa:empresa.razonSocialEmpresa,
+      //apellidopersona:persona.apellidoPersona,
+      //tipodocumentopersona:persona.idTipoDocumento.toString(),
+      //numerodocumentopersona:persona.documentoPersona,
+      //pais:ciudad.idPais.toString(),
+      //departamento:ciudad.codigoDepartamento,
+      //ciudad:persona.idCiudad.toString(),
+      direccion:empresa.direccionEmpresa,
+      email:empresa.emailEmpresa,
+      telefono:empresa.telefonoEmpresa,
+      ///rutaempresa:empresa.rutaEmpresa,
+    });
+  }
+
+
+  editarDatosEmpresa(idempresa:number){
+    let empresa : Empresas = new Empresas;
+
+    empresa.idEmpresa=idempresa;
+    //agregamos los datos del formulario a la tabla personas
+    empresa.razonSocialEmpresa=this.FGAgregarEmpresas.value.nombreempresa;
+    empresa.direccionEmpresa=this.FGAgregarEmpresas.value.direccion;
+    empresa.emailEmpresa=this.FGAgregarEmpresas.value.email;
+    empresa.telefonoEmpresa=this.FGAgregarEmpresas.value.telefono;
+     
+    
+   //suscrubimos la guardada de los datos en la tabla personas
+    this.empresasService.Edit(empresa).subscribe(); 
+    
+  }
+  
   constructor(
     public  router: Router,
     private formBuilder: FormBuilder,
@@ -55,6 +94,7 @@ export class EmpresasComponent
     private tiposDocumentosService : TiposDocumentosService,
     private ciudadesService : CiudadesService,
     private personasService : PersonasService,
+    private personasPorEmpresasService: PersonasPorEmpresasService,
     private ubicacionesService : UbicacionesService,
     private empresasService : EmpresasService){
       this.tiposDocumentosService.ListarTiposDocumentos().subscribe({
@@ -86,6 +126,15 @@ export class EmpresasComponent
    
   }
 
+  buscarPersonaPorIdEmprePorIdPersona(idEmpresa:number, idPersona:number){
+    
+  }
+
+  
+
+
+
+
   crearEmpresas (idPersona : number){
        //al guardar los datos de la persona esta devuelve el id que lo utilizaremos para relacionarlo a la tabla
        //empresas donde este dato se captura para agregarlo como id persona o idresponsable en la tabla empresas 
@@ -102,10 +151,13 @@ export class EmpresasComponent
        empresa.rutaEmpresa=this.FGAgregarEmpresas.value.rutaempresa;
        //suscribe la guardada de los adtos en la tabla empresa
        this.empresasService.Create(empresa).subscribe({
-         next: (dataempresa:number) =>{
-           // al guardar los datos de empresa el devuelve el id de la empresa guaradda este se utiliza para  
-           // iniciar la guardada de los datos en la tabla ubicacion iniciando con el id empresa  
-           this.crearUbicacion(dataempresa);
+         next: (dataIdEmpresa:number) =>{
+          if (dataIdEmpresa > 0){
+            // al guarda  los datos de empresa el devuelve el id de la empresa guaradda este se utiliza para  
+            // iniciar la guardada de los datos en la tabla ubicacion iniciando con el id empresa  
+            this.crearUbicacion(dataIdEmpresa);
+            this.crearPersonaPorEmpresa(dataIdEmpresa, idPersona);
+          }
          }
        })  
   }
@@ -120,6 +172,7 @@ export class EmpresasComponent
     this.ubicacionesService.Create(ubicacion).subscribe();
   } 
 
+ 
   crearPersona(){
     let persona : Personas = new Personas;
 
@@ -136,11 +189,20 @@ export class EmpresasComponent
     
    //suscrubimos la guardada de los datos en la tabla personas
     this.personasService.Create(persona).subscribe({
-      next : (datapersona:number) => {
-        this.crearEmpresas(datapersona);
+      next : (dataIdPersona:number) => {
+        this.crearEmpresas(dataIdPersona);
       }
     }); 
     //console.log(this.FGAgregarEmpresas.value);
+  }
+
+  crearPersonaPorEmpresa(idEmpresaP:number, idPersonaP:number){
+    let personasPorEmpresas : PersonasPorEmpresas = new PersonasPorEmpresas;  
+    personasPorEmpresas.idEmpresa=idEmpresaP;
+    personasPorEmpresas.idPersona=idPersonaP;
+    console.log(personasPorEmpresas);
+    
+    this.personasPorEmpresasService.Create(personasPorEmpresas).subscribe();
   }
 
   rutaEmpresaChange():void{
@@ -169,9 +231,11 @@ export class EmpresasComponent
             next : (datapersona:Personas) => {
              if(datapersona.idPersona>0){
                this.crearEmpresas(datapersona.idPersona);
+               //crear ubicacione o crear perona por empresa paralelo
              }
              else{
                this.crearPersona();
+               //guarda la persona por empresa
              }
            }
          }); 

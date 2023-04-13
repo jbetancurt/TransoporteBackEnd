@@ -217,4 +217,25 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="codigoDepartamento" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="282108fd-d459-400c-9115-a47edfc093d7" ChangeDateTime="03/16/2023 01:05:26">
+    <Property Name="ElementName" Value="[dbo].[PersonasPorEmpresa].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[PersonasPorEmpresa]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="idPersonaPorEmpresa" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="9f9e2e56-01e2-4e47-a081-e195c44cba40" ChangeDateTime="03/16/2023 01:33:57">
+    <Property Name="ElementName" Value="[dbo].[RegistrosDeCambios].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[RegistrosDeCambios]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="IdRegistroCambio" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="7d5a6ce3-5e56-4adb-8039-aa902ef7eba5" ChangeDateTime="03/16/2023 01:34:23">
+    <Property Name="ElementName" Value="[dbo].[RegistrosDeCambios].[IdRegistroCambio]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[RegistrosDeCambios]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="idRegistroCambio" />
+  </Operation>
 </Operations>

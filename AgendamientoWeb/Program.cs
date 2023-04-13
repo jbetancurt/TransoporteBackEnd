@@ -72,6 +72,9 @@ builder.Services.AddTransient<IPersonasServicios, PersonasServicios>();
 builder.Services.AddTransient<IProgramacionesDeServiciosServicios, ProgramacionesDeServiciosServicios>();
 builder.Services.AddTransient<IRolesServicios, RolesServicios>();
 builder.Services.AddTransient<IRolesUsuariosServicios, RolesUsuariosServicios>();
+builder.Services.AddTransient<IPersonasPorEmpresasServicios, PersonasPorEmpresasServicios>();
+builder.Services.AddTransient<IRegistrosDeCambiosServicios, RegistrosDeCambiosServicios>();
+
 
 builder.Services.AddTransient<IServiciosServicios, ServiciosServicios>();
 builder.Services.AddTransient<ITiposDocumentosServicios, TiposDocumentosServicios>();

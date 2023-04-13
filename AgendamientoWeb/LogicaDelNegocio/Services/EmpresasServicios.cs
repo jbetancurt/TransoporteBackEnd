@@ -53,6 +53,47 @@ namespace AgendamientoWeb.LogicaDelNegocio.Services
             await _dbcontext.SaveChangesAsync();
             return true;
         }
+
+        public async Task<List<Personas>> ListarPersonasPorEmpresas(int idEmpresa)
+        {
+            var resultado=new List<Personas>();
+            var personaporempresa= await _dbcontext.PersonasPorEmpresas.Where(x => x.idEmpresa == idEmpresa).Select(x => x.idPersona).ToListAsync();
+            if(personaporempresa.Any())
+            {
+                try
+                {
+                    return await _dbcontext.Personas.Where(x => personaporempresa.Contains(x.idPersona)).ToListAsync();
+                }
+                catch (Exception e)
+                {
+
+                    throw;
+                }
+                
+            }
+            return resultado;
+        }
+
+
+        public async Task<List<Ubicaciones>> ListarUbicacionesPorEmpresas(int idEmpresa)
+        {
+            var resultado = new List<Ubicaciones>();
+            var ubicacionporempresa = await _dbcontext.Ubicaciones.Where(x => x.idEmpresa == idEmpresa).Select(x => x.idUbicacion).ToListAsync();
+            if (ubicacionporempresa.Any())
+            {
+                try
+                {
+                    return await _dbcontext.Ubicaciones.Where(x => ubicacionporempresa.Contains(x.idUbicacion)).ToListAsync();
+                }
+                catch (Exception e)
+                {
+
+                    throw;
+                }
+
+            }
+            return resultado;
+        }
     }
     public interface IEmpresasServicios
     {
@@ -60,7 +101,8 @@ namespace AgendamientoWeb.LogicaDelNegocio.Services
         Task<bool> Editar(int idEmpresa, Empresas empresas);
         Task<Empresas> ConsultarPorId(int idEmpresa);
         Task<Empresas> ConsultarPorDocumentoEmpresa(int idTipoDocumentoEmpresa, string documentoEmpresa);
-
+        Task<List<Ubicaciones>> ListarUbicacionesPorEmpresas(int idEmpresa);
+        Task<List<Personas>> ListarPersonasPorEmpresas(int idEmpresa);
         Task<Empresas> ConsultarPorRutaEmpresa(string rutaempresa);
         
         Task Borrar(int idEmpresa);

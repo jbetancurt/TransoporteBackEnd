@@ -27,16 +27,6 @@
                 </mat-form-field>
                 <br>
 
-                <mat-form-field appearance="fill"  class="form-comtrol">
-                    <mat-label>Ubicacion:</mat-label>
-                    <mat-select formControlName="ubicacioninventario" >
-                        <mat-option  *ngFor="let menu of lstUbicaciones" [value]="menu.idUbicacion.toString()" >
-                            {{menu.nombreUbicacion}}
-                        </mat-option>
-                    </mat-select>
-                </mat-form-field>
-                <br>
-                
                 <br>
             </mat-card-content>
             <mat-card-footer>
