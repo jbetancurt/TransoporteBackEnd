@@ -28,6 +28,19 @@ import { UbicacionesComponent } from './Componentes/ubicaciones/ubicaciones.comp
 import { UsuariosComponent } from './Componentes/usuarios/usuarios.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdministrarEmpresasComponent } from './Componentes/administradores/administrar-empresas/administrar-empresas.component';
+import {PersonasPorEmpresasComponent} from "./Componentes/personas-por-empresas/personas-por-empresas.component";
+import {RegistrosDeCambiosComponent} from "./Componentes/registros-de-cambios/registros-de-cambios.component";
+import { PersonasModalComponent } from './Componentes/modales/personas-modal/personas-modal.component';
+import { EmpresasModalComponent } from './Componentes/modales/empresas-modal/empresas-modal.component';
+import { InventariosModalComponent } from './Componentes/modales/inventarios-modal/inventarios-modal.component';
+import { LocacionesModalComponent } from './Componentes/modales/locaciones-modal/locaciones-modal.component';
+import { ServiciosModalComponent } from './Componentes/modales/servicios-modal/servicios-modal.component';
+import { UbicacionesModalComponent } from './Componentes/modales/ubicaciones-modal/ubicaciones-modal.component';
+import { AdministrarPersonasComponent } from './Componentes/administradores/administrar-personas/administrar-personas.component';
+import { AdministrarUbicacionesComponent } from './Componentes/administradores/administrar-ubicaciones/administrar-ubicaciones.component';
+import { AdministrarProgramacionCitasComponent } from './Componentes/administradores/administrar-programacion-citas/administrar-programacion-citas.component';
+import { AdministrarProgramacionAgendaComponent } from './Componentes/administradores/administrar-programacion-agenda/administrar-programacion-agenda.component';
+
 
 @NgModule({
   declarations: [
@@ -53,7 +66,19 @@ import { AdministrarEmpresasComponent } from './Componentes/administradores/admi
     TiposNegociosComponent,
     UbicacionesComponent,
     UsuariosComponent,
-    AdministrarEmpresasComponent
+    AdministrarEmpresasComponent,
+    PersonasPorEmpresasComponent,
+    RegistrosDeCambiosComponent,
+    PersonasModalComponent,
+    EmpresasModalComponent,
+    InventariosModalComponent,
+    LocacionesModalComponent,
+    ServiciosModalComponent,
+    UbicacionesModalComponent,
+    AdministrarPersonasComponent,
+    AdministrarUbicacionesComponent,
+    AdministrarProgramacionCitasComponent,
+    AdministrarProgramacionAgendaComponent
   ],
   imports: [
     BrowserModule,

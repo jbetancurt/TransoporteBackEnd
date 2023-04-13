@@ -2,7 +2,9 @@
   import { Injectable } from '@angular/core';
   import { Observable } from 'rxjs';
   import { environment } from 'src/environments/environment';
+  import { Personas } from '../personas';
   import { Empresas } from './empresas.model';
+import { Ubicaciones } from '../ubicaciones';
   const urlPage = environment.apiUrl +'/api/empresas';
   const httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -27,6 +29,20 @@
       let url = urlPage + "/consultarporruta/" + rutaempresa; 
        
       let obj =this.httpClient.get<Empresas>(url, httpOptions);
+      return obj;
+    }
+
+    public ListarPersonasPorEmpresas(idEmpresa:string): Observable<Personas[]>{ 
+      let url = urlPage + "/listarpersonasporempresa/" + idEmpresa; 
+       
+      let obj =this.httpClient.get<Personas[]>(url, httpOptions);
+      return obj;
+    }
+
+    public ListarUbicacionesPorEmpresas(idEmpresa:string): Observable<Ubicaciones[]>{ 
+      let url = urlPage + "/listarubicacionesporempresa/" + idEmpresa; 
+       
+      let obj =this.httpClient.get<Ubicaciones[]>(url, httpOptions);
       return obj;
     }
 

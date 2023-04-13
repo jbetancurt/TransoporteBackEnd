@@ -1,0 +1,48 @@
+<table mat-table [dataSource]="lstUbicaciones" class="mat-elevation-z8">
+    <ng-container matColumnDef="nombreubicacion">
+        <th mat-header-cell *matHeaderCellDef> Nombre Ubicacion </th>
+        <td mat-cell *matCellDef="let element"> {{element.nombreUbicacion}} </td>
+    </ng-container>
+    <ng-container matColumnDef="direccionubicacion">
+        <th mat-header-cell *matHeaderCellDef> Direccion Ubicacion </th>
+        <td mat-cell *matCellDef="let element"> 
+            {{element.direccionUbicacion}}
+        </td>
+    </ng-container>
+    <ng-container matColumnDef="telefonoubicacion">
+        <th mat-header-cell *matHeaderCellDef> Telefono Ubicacion </th>
+        <td mat-cell *matCellDef="let element">                 
+            {{ element.telefonoUbicacion }} 
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="observacionubicacion">
+        <th mat-header-cell *matHeaderCellDef> Observacion Ubicacion </th>
+        <td mat-cell *matCellDef="let element">                 
+            {{ element.observacionUbicacion }} 
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="editar">
+        <th mat-header-cell *matHeaderCellDef>  </th>
+        <td mat-cell *matCellDef="let element"> 
+            <button type="button"  mat-fab extended color="primary" aria-label="editar ubicacion" (click)="AbrirModalUbicacion(element.idUbicacion)">
+                <mat-icon>link</mat-icon>
+                Editar
+            </button>
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="borrar">
+        <th mat-header-cell *matHeaderCellDef>  </th>
+        <td mat-cell *matCellDef="let element"> 
+            <button type="button"  mat-fab extended color="primary" aria-label="borrar ubicacion" (click)="AbrirModalUbicacion(element.idUbicacion)">
+                <mat-icon>3d_rotation</mat-icon>
+                Editar
+            </button>
+        </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

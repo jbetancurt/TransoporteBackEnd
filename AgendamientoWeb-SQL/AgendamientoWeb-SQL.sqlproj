@@ -79,6 +79,8 @@
     <Build Include="Servicios.sql" />
     <Build Include="ProgramacionesDeServicios.sql" />
     <Build Include="CitasPorProgramacionesDeServicios.sql" />
+    <Build Include="PersonasPorEmpresas.sql" />
+    <Build Include="RegistrosDeCambios.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="AgendamientoWeb-SQL.refactorlog" />

@@ -1,1 +1,40 @@
-<p>servicios works!</p>
+<form [formGroup]="FGAgregarServicio" (ngSubmit)="FGAgregarServicio.valid &&  enviarDatos()" #formulario>
+    <ng-container >
+        <mat-card class="cardconfiguracion">
+            <mat-card-header>
+                <mat-card-title>
+                    <span>
+                        Agregar Servicio
+                    </span>
+                </mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <mat-form-field appearance="fill"  class="form-comtrol">
+                    <mat-label> Nombre Servicio:</mat-label>
+                    <input matInput   formControlName="nombreservicio" [readonly]="false">
+                </mat-form-field>
+                <br>
+
+                <mat-form-field appearance="fill"  class="form-comtrol">
+                    <mat-label>Duracion Servicio:</mat-label>
+                    <input matInput   formControlName="duracionservicio" [readonly]="false">
+                </mat-form-field>
+                <br>
+
+                <mat-form-field appearance="fill"  class="form-comtrol">
+                    <mat-label>Cupo Servicio:</mat-label>
+                    <input matInput   formControlName="cuposervicio" [readonly]="false">
+                </mat-form-field>
+                <br>
+
+                
+            </mat-card-content>
+            <mat-card-footer>
+                <button  mat-button color="primary" (submit)="enviarDatos()" >
+                    Agregar
+                </button>
+            </mat-card-footer>
+
+        </mat-card>
+    </ng-container>
+</form>

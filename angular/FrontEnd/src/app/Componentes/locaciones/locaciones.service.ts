@@ -11,7 +11,7 @@ const httpOptions = {
 @Injectable({
   providedIn: 'root'
 })
-export default class LocacionesService {
+export class LocacionesService {
   _Locaciones? : Locaciones[];
   
 
