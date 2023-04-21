@@ -6,7 +6,8 @@
     background-color: rgba(0, 0, 0, 0.12) !important;
   }
 
-  :host {             
+  
+::ng-deep {             
     display: block;
     left: 0;
 

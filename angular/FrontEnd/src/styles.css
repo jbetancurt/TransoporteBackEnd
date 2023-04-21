@@ -20,3 +20,7 @@ app-root {
     display: block;
     height: 100%;
   }
+
+.barra_lateral{
+    height: 100%;
+}

@@ -1,26 +1,26 @@
-    <mat-sidenav-container fxLayout="column">
-        <mat-sidenav #sidenav >
-          <p><button mat-button (click)="sidenav.toggle()">Menu</button></p>
+    <mat-sidenav-container  class="barra_lateral">
+        <mat-sidenav #sidenav [mode]="'side'" opened="true">
           <p>
-                <button type="button" mat-fab extended color="primary" (click)="AdministrarPersona()">Abrir Persona
-                    <mat-icon>3d_rotation</mat-icon>
-                </button>
+                <button type="button" mat-fab extended color="primary" (click)="AdministrarPersona()" class="boton_barra">Abrir Persona</button>
+                             
                 <br>
                 <br>
-                <button type="button" mat-fab extended color="primary" (click)="AdministrarPersona()">Abrir Persona
-                    <mat-icon>3d_rotation</mat-icon>
-                </button>
+                <button type="button" mat-fab extended color="primary" (click)="AdministrarPersona()" class="boton_barra">Programacion Agendas</button>
+                               
                 <br>
                 <br>
-                <button (click)="AdministrarUbicacion()">Abrir Ubicacion</button>
+                <button type="button" style="height: 85;" mat-fab extended color="primary" (click)="AdministrarUbicacion()" class="boton_barra">Administrar Citas</button>
                 <br>
                 <br>
+                <button type="button" style="height: 85;" mat-fab extended color="primary" (click)="AdministrarUbicacion()" class="boton_barra">Abrir Ubicacion</button>
+                <br>
+                <br>
+                
                 <button (click)="OcultarTodos()">Cerrar</button>
           </p>
         </mat-sidenav>
       
         <mat-sidenav-content>
-          <p><button mat-button (click)="sidenav.toggle()">Menu</button></p>
           <p>
             <app-administrar-ubicaciones *ngIf="mostraradministrarubicacion" [idEmpresa]="idEmpresa"></app-administrar-ubicaciones>
             <app-administrar-personas *ngIf="mostraradministrarpersona" [idEmpresa]="idEmpresa"></app-administrar-personas>  
